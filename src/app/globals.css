@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #020711;
+  --color-surface: #030b14;
+  --color-accent: #5eebff;
+  --color-foreground: #ffffff;
+  --color-muted: #9ca8b8;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(94, 235, 255, 0.22);
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020711;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(94, 235, 255, 0.15);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(94, 235, 255, 0.28);
+}
+
+@layer utilities {
+  .text-body {
+    @apply text-[15px] leading-relaxed text-[#b8c4d0] md:text-base md:leading-relaxed;
+  }
+
+  .text-body-sm {
+    @apply text-sm leading-relaxed text-[#9ca8b8];
+  }
+
+  .section-pad {
+    @apply py-16 md:py-24;
+  }
+
+  .premium-gradient {
+    background: radial-gradient(
+      ellipse 70% 60% at 50% 40%,
+      rgba(15, 45, 80, 0.55) 0%,
+      rgba(3, 11, 20, 0.95) 55%,
+      #020711 100%
+    );
+  }
+
+  .ocean-gradient {
+    background: linear-gradient(
+      180deg,
+      rgba(2, 7, 17, 0.3) 0%,
+      rgba(2, 7, 17, 0.5) 40%,
+      rgba(2, 7, 17, 0.85) 80%,
+      #020711 100%
+    );
+  }
+
+  .product-glow {
+    background: radial-gradient(
+      circle at 50% 52%,
+      rgba(94, 235, 255, 0.24) 0%,
+      rgba(94, 235, 255, 0.08) 38%,
+      transparent 68%
+    );
+  }
+
+  .wave-shimmer {
+    background: linear-gradient(
+      0deg,
+      rgba(94, 235, 255, 0.06) 0%,
+      transparent 100%
+    );
+    animation: wave-drift 8s ease-in-out infinite;
+  }
+
+  /* Luxury product tile: cyan border + lifted glow on hover */
+  .lux-tile {
+    transition:
+      transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.4s ease,
+      box-shadow 0.4s ease;
+  }
+
+  .lux-tile:hover {
+    transform: translateY(-8px);
+    border-color: rgba(94, 235, 255, 0.5);
+    box-shadow:
+      0 0 0 1px rgba(94, 235, 255, 0.3),
+      0 22px 56px -12px rgba(94, 235, 255, 0.32),
+      0 14px 44px rgba(0, 0, 0, 0.55);
+  }
+
+  /* Soft cyan halo placed behind a major image block */
+  .tile-halo {
+    background: radial-gradient(
+      ellipse 60% 55% at 50% 45%,
+      rgba(94, 235, 255, 0.16) 0%,
+      rgba(94, 235, 255, 0.04) 45%,
+      transparent 70%
+    );
+    filter: blur(8px);
+  }
+
+  @keyframes wave-drift {
+    0%,
+    100% {
+      opacity: 0.4;
+      transform: translateY(0);
+    }
+    50% {
+      opacity: 0.7;
+      transform: translateY(-6px);
+    }
+  }
+}
